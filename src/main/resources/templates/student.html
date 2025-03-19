@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="https:www.thymleaf.org">
+<head>
+    <title>Server Side</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+    <h1>Create Account</h1>
+    <form method="POST" th:action="@{/festac/students}" th:object="${newStudent}">
+        <label>First Name:</label>
+        <input type="text" th:field="*{firstName}">
+        <label>Last Name:</label>
+        <input type="text" th:field="*{lastName}">
+        <label>Age</label>
+        <input type="number" th:field="*{age}">
+        <label>Email:</label>
+        <input type="email" th:field="*{email}">
+        <label>Password:</label>
+        <input type="password" th:field="*{password}">
+        <button type="submit">Create Account</button>
+    </form>
+
+    <br/>
+    <br/>
+    <h1>List of Students</h1>
+    <table style="padding: 10px;">
+        <thead>
+            <tr>
+                <th>S/N</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>age</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody th:each="student : ${students}">
+            <tr>
+                <td>[[${student.id}]]</td>
+                <td>[[${student.firstName}]]</td>
+                <td>[[${student.lastName}]]</td>
+                <td>[[${student.age}]]</td>
+                <td>[[${student.email}]]</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
